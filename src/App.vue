@@ -1,25 +1,12 @@
 <template>
-  	<h1 v-bind:class="classTitre">Je suis un titre {{ classTitre }}</h1>
-	<button @click="toggleColor">Changer la couleur</button>
+  	<h1 :class="etat ? 'rouge' : 'bleu'">Je suis un titre {{ etat ? 'rouge' : 'bleu' }}</h1>
+	<button @click="etat = !etat">Changer la couleur</button>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-const classTitre = ref('rouge');
-
-let etat = true;
-const toggleColor = () => {
-	if(etat) {
-		classTitre.value = 'bleu'
-	}
-	else {
-		classTitre.value = 'rouge'
-	}
-
-	etat = !etat;
-}
-
+const etat = ref(true);
 </script>
 
 <style scoped>
