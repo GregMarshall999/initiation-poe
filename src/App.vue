@@ -19,10 +19,10 @@ export default {
 		const text = ref('toast');
 		const refChargement = ref(null);
 
-		onBeforeMount(() => console.log('beforeMount'))
+		onBeforeMount(() => console.log('beforeMount', refChargement.value))
 
 		onMounted(() => {
-			console.log('mounted');
+			console.log('mounted', refChargement.value);
 
 			setTimeout(() => refChargement.value.textContent = 'Chargé', 2000);
 		}) 
