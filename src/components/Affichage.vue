@@ -1,5 +1,10 @@
 <template>
-    <div v-show="show" class="container">
+    <div 
+        v-show="show" 
+        class="container"
+        @click="emit('envoyerTitre', props.titre)"
+        style="cursor: pointer;"
+    >
         <h1>{{ titre }}</h1>
         <p v-for="t in textes">{{ t }}</p>
 
@@ -23,6 +28,8 @@ const props = defineProps({
         default: false
     }
 });
+
+const emit = defineEmits(['envoyerTitre']);
 
 </script>
 

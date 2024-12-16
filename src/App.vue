@@ -1,10 +1,12 @@
 <template>
-	<h1>Titre de la page</h1>
+	<h1>{{ titrePage }}</h1>
 
 	<Affichage 
 		:titre="affichage1.titre" 
 		:textes="affichage1.textes" 
 		:obj="{test: 'je suis requis'}"
+		:show="true"
+		@envoyer-titre="titre => changerTitre(titre)"
 	/>
 
 	<Affichage 
@@ -12,18 +14,24 @@
 		:textes="affichage2.textes" 
 		:obj="{}" 
 		:show="true"
+		@envoyerTitre="changerTitre"
 	/>
 </template>
 
 <script setup>
 import { reactive } from 'vue';
 import Affichage from './components/Affichage.vue';
+import { ref } from 'vue';
+
+const titrePage = ref('Titre de la page');
+const changerTitre = newTitre => {
+	titrePage.value = newTitre;
+}
 
 const affichage1 = reactive({
 	titre: 'Titre principal', 
 	textes: ['Première ligne', 'Seconde ligne'], 
 })
-
 const affichage2 = reactive({
 	titre: 'Titre secondaire', 
 	textes: [    
