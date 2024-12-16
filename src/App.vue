@@ -1,8 +1,13 @@
 <template>
-  
+  	<p>{{ text }}</p>
+	<input v-model="text" :placeholder="placeholder"/>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
+
+const text = ref('Du texte');
+const placeholder = ref('Entrez du texte');
 
 </script>
 
