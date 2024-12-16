@@ -1,8 +1,20 @@
 <template>
-  
+	<button @click="affichage = !affichage">Changer l'affichage</button>
+
+	<h1 id="moi" v-if="affichage">Je suis présent dans le DOM</h1>
+	<h1 v-else>Je suis l'autre qui apparait à sa place</h1>
+
+	<h2 v-show="affichage">Je reste dans le DOM même caché</h2>
+
+	<h3 v-if="test">{{ test.compte }}</h3>
 </template>
 
-<script>
+<script setup>
+import { reactive, ref } from 'vue';
+
+const affichage = ref(true);
+
+const test = reactive();
 
 </script>
 
