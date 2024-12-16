@@ -1,8 +1,33 @@
 <template>
-  
+	<button v-on:click="increment">
+		Le compte est: {{ compte }}
+	</button>
+	<div @click="resetCompte" style="cursor: pointer;">Rétablir le compte à 0</div>
 </template>
 
 <script>
+
+import { ref } from 'vue';
+
+export default {
+	setup() {
+		const compte = ref(0);
+
+		function increment() {
+			compte.value++;
+		}
+
+		const resetCompte = () => {
+			compte.value = 0;
+		}
+
+		return {
+			compte, 
+			increment, 
+			resetCompte
+		}
+	}
+}
 
 </script>
 
