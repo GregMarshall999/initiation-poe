@@ -1,4 +1,9 @@
 <template>
+	<form @submit.prevent="ajouter">
+		<input v-model="tache" required placeholder="Nouvelle Tache"/>
+		<button>Ajouter une tache</button>
+	</form>
+
 	<ul>
 		<li v-for="todo in todoList" :key="todo.id">
 			{{ todo.texte }} | 
@@ -8,7 +13,6 @@
 </template>
 
 <script setup>
-
 import { ref } from 'vue';
 
 var id = 0;
@@ -17,7 +21,11 @@ const todoList = ref([
 	{ id: id++, texte: 'Faire le petit dej' },
 	{ id: id++, texte: 'Aller au travail' }
 ]);
-
+const tache = ref();
+const ajouter = () => {
+	todoList.value.push({ id: id++, texte: tache.value });
+	tache.value = '';
+}
 const removeByIndex = index => {
 	const res = [];
 
@@ -29,7 +37,6 @@ const removeByIndex = index => {
 
 	todoList.value = res;
 };
-
 const removeTodo = todo => {
 	todoList.value = todoList.value.filter(t => t != todo);
 }
