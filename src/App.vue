@@ -1,14 +1,18 @@
 <template>
-  	<p>{{ text }}</p>
-	<input v-model="text" :placeholder="placeholder"/>
+  	<h1>Nom Prénom</h1>
+	<input v-model="info.nom" placeholder="Entrez votre nom"/>
+	<input v-model="info.prenom" placeholder="Entrez votre prénom"/>
+
+	<button @click="console.log(info.nom, info.prenom)">Envoyer les informations</button>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
-const text = ref('Du texte');
-const placeholder = ref('Entrez du texte');
-
+const info = reactive({
+	nom: '', 
+	prenom: ''
+});
 </script>
 
 <style scoped>
