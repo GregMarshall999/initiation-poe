@@ -1,9 +1,28 @@
 <template>
-	<Observateurs />
+	<h1>Titre de la page</h1>
+
+	<Affichage :titre="affichage1.titre" :textes="affichage1.textes"/>
+	<Affichage :titre="affichage2.titre" :textes="affichage2.textes"/>
 </template>
 
 <script setup>
-import Observateurs from '@/components/Observateurs.vue';
+import { reactive } from 'vue';
+import Affichage from './components/Affichage.vue';
+
+const affichage1 = reactive({
+	titre: 'Titre principal', 
+	textes: ['Première ligne', 'Seconde ligne'], 
+})
+
+const affichage2 = reactive({
+	titre: 'Titre secondaire', 
+	textes: [    
+		'Neque porro quisquam est qui dolorem ipsum.', 
+    	'Sit amet, consectetur, adipisci velit.', 
+    	'Dolorem ipsum quia.'
+	], 
+})
+
 </script>
 
 <style scoped>
