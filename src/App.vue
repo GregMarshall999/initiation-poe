@@ -1,27 +1,30 @@
 <template>
 	<h1>{{ titrePage }}</h1>
 
-	<Affichage 
-		:titre="affichage1.titre" 
-		:textes="affichage1.textes" 
-		:obj="{test: 'je suis requis'}"
-		:show="true"
-		@envoyer-titre="titre => changerTitre(titre)"
-	/>
+	<AffichageSimple>
+		J'ai initialisé l'emplacement depuis le parent.
+	</AffichageSimple>
 
-	<Affichage 
-		:titre="affichage2.titre" 
-		:textes="affichage2.textes" 
-		:obj="{}" 
-		:show="true"
-		@envoyerTitre="changerTitre"
-	/>
+	<AffichageComplexe>
+		<template v-slot:header>
+			Titre du Lorem
+		</template>
+
+		<template #default>
+			Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum aliquam cumque cum quidem totam quae porro asperiores maiores laudantium, explicabo blanditiis repudiandae ex culpa voluptate officia, magni perspiciatis nobis sunt?
+		</template>
+
+		<template #footer>
+			<p>Le footer du Lorem</p>
+		</template>
+	</AffichageComplexe>
 </template>
 
 <script setup>
 import { reactive } from 'vue';
-import Affichage from './components/Affichage.vue';
 import { ref } from 'vue';
+import AffichageSimple from './components/AffichageSimple.vue';
+import AffichageComplexe from './components/AffichageComplexe.vue';
 
 const titrePage = ref('Titre de la page');
 const changerTitre = newTitre => {
