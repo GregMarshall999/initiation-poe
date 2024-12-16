@@ -1,8 +1,41 @@
 <template>
-  
+  	{{ text }}
+	<button @click="text = 'test'">Changer</button>
+	<p ref="refChargement">Je suis en train de charger</p>
 </template>
 
 <script>
+
+export default {
+	data() {
+		return {
+			text: 'toast'
+		}
+	},
+	setup() {
+		console.log('setup');
+	}, 
+	beforeCreate() {
+		console.log('before create', this.text);
+	}, 
+	created() {
+		console.log('create', this.text);
+	}, 
+	beforeMount() {
+		console.log('beforeMount');
+	}, 
+	mounted() {
+		console.log('mounted');
+
+		setTimeout(() => this.$refs.refChargement.textContent = 'Chargé', 2000);
+	}, 
+	beforeUpdate() {
+		console.log('before update', this.text)
+	}, 
+	updated() {
+		console.log('updated', this.text)
+	}
+}
 
 </script>
 
