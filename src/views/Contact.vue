@@ -27,7 +27,7 @@ onUnmounted(() => console.log(textContact.value));
 
 </script>
 
-<style>
+<style scoped>
 
 .form-contact {
     border: 1px solid rgb(86, 145, 117);
