@@ -6,34 +6,35 @@
 
 <script>
 
+import { onMounted } from 'vue';
+import { onUpdated } from 'vue';
+import { onBeforeUpdate } from 'vue';
+import { onBeforeMount } from 'vue';
+import { ref } from 'vue';
+
 export default {
-	data() {
-		return {
-			text: 'toast'
-		}
-	},
 	setup() {
 		console.log('setup');
-	}, 
-	beforeCreate() {
-		console.log('before create', this.text);
-	}, 
-	created() {
-		console.log('create', this.text);
-	}, 
-	beforeMount() {
-		console.log('beforeMount');
-	}, 
-	mounted() {
-		console.log('mounted');
 
-		setTimeout(() => this.$refs.refChargement.textContent = 'Chargé', 2000);
-	}, 
-	beforeUpdate() {
-		console.log('before update', this.text)
-	}, 
-	updated() {
-		console.log('updated', this.text)
+		const text = ref('toast');
+		const refChargement = ref(null);
+
+		onBeforeMount(() => console.log('beforeMount'))
+
+		onMounted(() => {
+			console.log('mounted');
+
+			setTimeout(() => refChargement.value.textContent = 'Chargé', 2000);
+		}) 
+		
+		onBeforeUpdate(() => console.log('before update', text.value))
+
+		onUpdated(() => console.log('updated', text.value))
+
+		return {
+			text, 
+			refChargement
+		}
 	}
 }
 
