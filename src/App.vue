@@ -1,8 +1,8 @@
 <template>
 	<ul>
-		<li v-for="(todo, index) in todoList" :key="todo.id">
+		<li v-for="todo in todoList" :key="todo.id">
 			{{ todo.texte }} | 
-			<button @click="removeByIndex(index)">X</button>
+			<button @click="removeTodo(todo)">X</button>
 		</li>
 	</ul>
 </template>
@@ -29,6 +29,10 @@ const removeByIndex = index => {
 
 	todoList.value = res;
 };
+
+const removeTodo = todo => {
+	todoList.value = todoList.value.filter(t => t != todo);
+}
 
 </script>
 
