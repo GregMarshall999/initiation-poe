@@ -17,7 +17,7 @@ const textContact = ref('');
 const contacter = () => {
     console.log(textContact.value);
 
-    router.push({ name: 'Home' });
+    router.push({ name: 'Message', params: { message: textContact.value } });
 };
 
 onBeforeUnmount(() => {
