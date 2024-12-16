@@ -1,8 +1,34 @@
 <template>
-  
+	<ul>
+		<li v-for="(todo, index) in todoList" :key="todo.id">
+			{{ todo.texte }} | 
+			<button @click="removeByIndex(index)">X</button>
+		</li>
+	</ul>
 </template>
 
-<script>
+<script setup>
+
+import { ref } from 'vue';
+
+var id = 0;
+const todoList = ref([
+	{ id: id++, texte: 'Faire le lit' }, 
+	{ id: id++, texte: 'Faire le petit dej' },
+	{ id: id++, texte: 'Aller au travail' }
+]);
+
+const removeByIndex = index => {
+	const res = [];
+
+	for(var i = 0; i < todoList.value.length; i++) {
+		if(i != index) {
+			res.push(todoList.value[i]);
+		}
+	}
+
+	todoList.value = res;
+};
 
 </script>
 
