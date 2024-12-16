@@ -1,20 +1,19 @@
 <script lang="jsx">
 import { ref } from 'vue';
 
-const MonComponsant = (props) => {
-	return <div>Salut, je suis un {props.nom}!</div>
-}
-
 export default {
-	components: {
-		MonComponsant
-	},
 	setup() {
-		const message = ref('Robot');
+		const show = ref(true);
+
+		const toggle = () => {
+			show.value = !show.value;
+		}
 
 		return () => (
 			<div>
-				<MonComponsant nom={message.value} />
+				{ show.value ? <p>J'affiche</p> : <p>Je Cache</p> }
+				{ show.value && <p>Je ne suis pas là quand show est faux</p> }
+				<button onclick={toggle}>click</button>
 			</div>
 		)
 	}
