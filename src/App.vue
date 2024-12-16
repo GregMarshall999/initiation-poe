@@ -1,20 +1,13 @@
 <script lang="jsx">
-import { ref } from 'vue';
 
 export default {
 	setup() {
-		const show = ref(true);
-
-		const toggle = () => {
-			show.value = !show.value;
-		}
+		const items = ['Pomme', 'Poire', 'Abrico'];
 
 		return () => (
-			<div>
-				{ show.value ? <p>J'affiche</p> : <p>Je Cache</p> }
-				{ show.value && <p>Je ne suis pas là quand show est faux</p> }
-				<button onclick={toggle}>click</button>
-			</div>
+			<ul>
+				{items.map(i => ( <li key={i}>{i}</li> ))}
+			</ul>
 		)
 	}
 }
