@@ -1,22 +1,22 @@
-<template></template>
+<script lang="jsx">
+import { ref } from 'vue';
 
-<script>
-import { h, ref } from 'vue';
+const MonComponsant = (props) => {
+	return <div>Salut, je suis un {props.nom}!</div>
+}
 
 export default {
+	components: {
+		MonComponsant
+	},
 	setup() {
-		const compte = ref(0);
-		const incrementer = () => {
-			compte.value++;
-		}
+		const message = ref('Robot');
 
-		return () => 
-			h('div', { class: 'container' }, [
-				h('h1', 'Compteur avec JSX'), 
-				h('p', `Compte: ${compte.value}`), 
-				h('button', { onclick: incrementer }, 'Incrémenter')
-			]
-		);
+		return () => (
+			<div>
+				<MonComponsant nom={message.value} />
+			</div>
+		)
 	}
 }
 
