@@ -1,13 +1,28 @@
 <script lang="jsx">
 
-export default {
-	setup() {
-		const items = ['Pomme', 'Poire', 'Abrico'];
+const ComposantSlots = (_, { slots }) => {
+	return (
+		<div>
+			<header>{slots.header()}</header>
+			<main>{slots.default()}</main>
+			<footer>{slots.footer()}</footer>
+		</div>
+	)
+}
 
+export default {
+	components: {
+		ComposantSlots
+	},
+	setup() {
 		return () => (
-			<ul>
-				{items.map(i => ( <li key={i}>{i}</li> ))}
-			</ul>
+			<ComposantSlots>
+				{{
+					header: () => <h1>Contenu d'entete</h1>,
+					default: () => <h1>Contenu Principal</h1>,
+					footer: () => <h1>Contenu Pied de page</h1>
+				}}
+			</ComposantSlots>
 		)
 	}
 }
