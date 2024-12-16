@@ -1,7 +1,11 @@
 <template>
-    <div class="container">
+    <div v-show="show" class="container">
         <h1>{{ titre }}</h1>
         <p v-for="t in textes">{{ t }}</p>
+
+        <span v-if="obj.test">
+            {{ obj.test }}
+        </span>
     </div>
 </template>
 
@@ -9,7 +13,15 @@
 
 const props = defineProps({
     titre: String, 
-    textes: Array
+    textes: Array, 
+    obj: {
+        type: Object, 
+        required: true
+    }, 
+    show: {
+        type: Boolean, 
+        default: false
+    }
 });
 
 </script>

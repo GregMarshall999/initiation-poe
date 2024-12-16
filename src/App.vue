@@ -1,8 +1,18 @@
 <template>
 	<h1>Titre de la page</h1>
 
-	<Affichage :titre="affichage1.titre" :textes="affichage1.textes"/>
-	<Affichage :titre="affichage2.titre" :textes="affichage2.textes"/>
+	<Affichage 
+		:titre="affichage1.titre" 
+		:textes="affichage1.textes" 
+		:obj="{test: 'je suis requis'}"
+	/>
+
+	<Affichage 
+		:titre="affichage2.titre" 
+		:textes="affichage2.textes" 
+		:obj="{}" 
+		:show="true"
+	/>
 </template>
 
 <script setup>
