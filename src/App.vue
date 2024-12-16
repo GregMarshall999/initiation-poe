@@ -1,8 +1,35 @@
 <template>
-  
+	<h2>{{ message }}</h2>
+	<p>Le compte: {{ compteur.compte }}</p>
 </template>
 
-<script>
+<script setup>
+import { reactive, ref } from 'vue';
+
+const message = ref('Coucou');
+message.value = 'test'
+console.log(message);
+
+const compteur = reactive({
+	compte: 0
+});
+compteur.compte++
+
+/* Exemple Option API
+export default {
+	data() {
+		return {
+			message: 'Coucou', 
+			compteur: {
+				compte: 0
+			}
+		}
+	}, 
+	mounted() {
+		this.message = this.message + '!'
+		console.log('test')
+	}
+}*/
 
 </script>
 
