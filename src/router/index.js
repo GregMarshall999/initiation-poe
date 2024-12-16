@@ -1,5 +1,6 @@
 import Home from "@/views/Home.vue";
 import MessageContact from "@/views/MessageContact.vue";
+import NotFound from "@/views/NotFound.vue";
 import { createRouter, createWebHistory } from "vue-router"
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
         name: 'Message', 
         component: MessageContact, 
         props: true
+    }, 
+    {
+        path: '/:pathMatch(.*)*', 
+        name: 'NotFound', 
+        component: NotFound
     }
 ];
 
