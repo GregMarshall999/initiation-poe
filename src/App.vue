@@ -1,16 +1,15 @@
 <script lang="jsx">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
 export default {
 	setup() {
-		const divRef = ref(null);
-
-		onMounted(() => console.log(divRef.value));
+		const text = ref('Bienvenu dans le JSX de Vue');
 
 		return () => (
-			<div ref={divRef}>
-				C'est une div
-			</div>
+			<>
+				<input v-model={text.value} />
+				<p>{text.value}</p>
+			</>
 		)
 	}
 }
