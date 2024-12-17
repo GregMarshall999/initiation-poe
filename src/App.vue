@@ -1,9 +1,11 @@
 <template>
-  
+	<Formulaire 
+		@form-send="data => console.log(`Data: nom ${data.nom} | prenom ${data.prenom} | email ${data.email} | mdp ${data.mdp}`)"
+	/>
 </template>
 
-<script>
-
+<script setup>
+import Formulaire from './components/Formulaire.vue';
 </script>
 
 <style scoped>
