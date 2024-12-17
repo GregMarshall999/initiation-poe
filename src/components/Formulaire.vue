@@ -4,47 +4,80 @@
         <Champ
             :placeholder="'Ex: Doe...'"
             v-model="data.nom"
+            @validated-input="updateInvalidForm"
         >
             Votre Nom
         </Champ>
         <Champ
             :placeholder="'Ex: John...'"
             v-model="data.prenom"
+            @validated-input="updateInvalidForm"
         >
             Votre Prenom
         </Champ>
         <Champ
             :placeholder="'Ex: john.doe@ex.com...'"
             v-model="data.email"
+            @validated-input="updateInvalidForm"
         >
             Votre Email
         </Champ>
         <Champ
             :placeholder="'****'"
+            :type="'password'"
             v-model="data.mdp"
+            @validated-input="updateInvalidForm"
         >
             Votre Mot de Passe
         </Champ>
 
-        <button>Envoyer</button>
+        <button :disabled="invalidForm">Envoyer</button>
     </form>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import Champ from './Champ.vue';
 
 const data = reactive({
-    nom: '',
-    prenom: '',
-    email: '', 
-    mdp: ''
+    nom: {
+        val: '', 
+        isValid: true
+    },
+    prenom: {
+        val: '', 
+        isValid: true
+    },
+    email: {
+        val: '', 
+        isValid: true
+    },
+    mdp: {
+        val: '', 
+        isValid: true
+    },
 });
+const invalidForm = ref(false);
 
 const emit = defineEmits(['formSend']);
 
 const envoyerForm = () => {
-    emit('formSend', data);
+    updateInvalidForm()
+
+    if(!invalidForm.value) {
+        emit('formSend', data);
+    }
+}
+
+const updateInvalidForm = () => {
+    invalidForm.value = false;
+
+    for(let d of Object.keys(data)) {
+        if(data[d].val === '') {
+            invalidForm.value = true;
+            data[d].isValid = false;
+        }
+    }
 }
 </script>
 

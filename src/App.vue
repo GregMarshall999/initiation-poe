@@ -1,6 +1,6 @@
 <template>
 	<Formulaire 
-		@form-send="data => console.log(`Data: nom ${data.nom} | prenom ${data.prenom} | email ${data.email} | mdp ${data.mdp}`)"
+		@form-send="data => console.log(`Data: nom ${data.nom.val} | prenom ${data.prenom.val} | email ${data.email.val} | mdp ${data.mdp.val}`)"
 	/>
 </template>
 
