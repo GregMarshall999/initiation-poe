@@ -1,28 +1,16 @@
 <script lang="jsx">
-
-const ComposantSlots = (_, { slots }) => {
-	return (
-		<div>
-			<header>{slots.header()}</header>
-			<main>{slots.default()}</main>
-			<footer>{slots.footer()}</footer>
-		</div>
-	)
-}
+import { onMounted, ref } from 'vue';
 
 export default {
-	components: {
-		ComposantSlots
-	},
 	setup() {
+		const divRef = ref(null);
+
+		onMounted(() => console.log(divRef.value));
+
 		return () => (
-			<ComposantSlots>
-				{{
-					header: () => <h1>Contenu d'entete</h1>,
-					default: () => <h1>Contenu Principal</h1>,
-					footer: () => <h1>Contenu Pied de page</h1>
-				}}
-			</ComposantSlots>
+			<div ref={divRef}>
+				C'est une div
+			</div>
 		)
 	}
 }
