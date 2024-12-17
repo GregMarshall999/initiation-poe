@@ -13,12 +13,14 @@ export default {
 	setup() {
 		const compte = ref(0);
 
-		function increment() {
+		function increment(e) {
 			compte.value++;
 		}
 
-		const resetCompte = () => {
+		const resetCompte = (divEvent) => {
 			compte.value = 0;
+			console.log(divEvent, divEvent.target);
+			divEvent.target.style.color = 'red';
 		}
 
 		return {
