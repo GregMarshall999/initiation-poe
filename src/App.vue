@@ -1,5 +1,5 @@
 <template>
-	<button v-on:click="increment">
+	<button v-on:click="increment(2, $event)">
 		Le compte est: {{ compte }}
 	</button>
 	<div @click="resetCompte" style="cursor: pointer;">Rétablir le compte à 0</div>
@@ -13,8 +13,10 @@ export default {
 	setup() {
 		const compte = ref(0);
 
-		function increment(e) {
-			compte.value++;
+		function increment(incValue, event) {
+			compte.value += incValue;
+
+			console.log(event)
 		}
 
 		const resetCompte = (divEvent) => {
